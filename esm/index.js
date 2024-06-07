@@ -2,9 +2,8 @@ import initSqlJs from './sql.js';
 
 export default moduleConfig => {
   const url = URL.createObjectURL(
-    new Blob([sqlite()],
-    { type: 'application/wasm' },
-  ));
+    new Blob([sqlite()], { type: 'application/wasm' })
+  );
   return initSqlJs({ ...moduleConfig, locateFile: () => url }).then(
     SQL => (URL.revokeObjectURL(url), SQL),
   );
