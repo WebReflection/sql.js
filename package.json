@@ -1,6 +1,6 @@
 {
   "name": "@webreflection/sql.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "./cjs/index.js",
   "scripts": {
     "build": "node rollup/wasm.cjs && npm run cjs && npm run rollup:index && npm run size",
@@ -8,7 +8,10 @@
     "rollup:index": "rollup --config rollup/index.config.js",
     "size": "cat index.js | brotli | wc -c"
   },
-  "keywords": ["sqlite", "wasm"],
+  "keywords": [
+    "sqlite",
+    "wasm"
+  ],
   "author": "Andrea Giammarchi",
   "license": "MIT",
   "description": "An ESM re-packaged sql.js with embedded sqlite.wasm as buffer",
