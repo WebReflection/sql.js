@@ -32,7 +32,15 @@
   },
   "unpkg": "index.js",
   "dependencies": {
-    "buffer-to-base64": "^0.1.0",
+    "buffer-to-base64": "^0.1.1",
     "sql.js": "^1.10.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/sql.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WebReflection/sql.js/issues"
+  },
+  "homepage": "https://github.com/WebReflection/sql.js#readme"
 }
