@@ -1,6 +1,7 @@
 const { readFileSync, writeFileSync } = require('node:fs');
 const { join } = require('node:path');
 const sql = require('sql.js');
+const { encode } = require('buffer-to-base64/encode');
 
 const wasm = readFileSync(require.resolve('sql.js/dist/sql-wasm.wasm'));
 const index = join(__dirname, '..', 'esm', 'index.js');
@@ -10,19 +11,12 @@ writeFileSync(
   `let initSqlJsPromise,module;\nexport default ${sql}`
 );
 
-writeFileSync(
-  index,
-  readFileSync(index).toString().replace(
-    /function sqlite\(\) \{[\S\s]+?return buffer;\s+\}/,
-    sqlite.toString().replace('$', wasm.toString('base64')),
-  )
-);
-
-// ugly but way faster than Uint8Array.from(str, c => c.carCodeAt(0))
-function sqlite() {
-  const str = atob('$');
-  const view = new Uint8Array(str.length);
-  for (let i = 0; i < str.length; i++)
-    view[i] = str[i].charCodeAt(0);
-  return view;
-}
+encode(wasm).then(base64 => {
+  writeFileSync(
+    index,
+    readFileSync(index).toString().replace(
+      /const sqlite = \(\) => decode\('[\S\s]*?'\);/,
+      `const sqlite = () => decode('${base64}');`,
+    )
+  );
+});

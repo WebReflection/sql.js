@@ -32,6 +32,7 @@
   },
   "unpkg": "index.js",
   "dependencies": {
+    "buffer-to-base64": "^0.1.0",
     "sql.js": "^1.10.3"
   }
 }
