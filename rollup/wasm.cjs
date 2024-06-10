@@ -18,11 +18,11 @@ writeFileSync(
   )
 );
 
+// ugly but way faster than Uint8Array.from(str, c => c.carCodeAt(0))
 function sqlite() {
   const str = atob('$');
-  const { length } = str;
-  const buffer = new Uint8Array(length);
-  for (let i = 0; i < length; i++)
-    buffer[i] = str[i].charCodeAt(0);
-  return buffer;
+  const view = new Uint8Array(str.length);
+  for (let i = 0; i < str.length; i++)
+    view[i] = str[i].charCodeAt(0);
+  return view;
 }
