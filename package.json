@@ -1,6 +1,6 @@
 {
   "name": "@webreflection/sql.js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "./cjs/index.js",
   "scripts": {
     "build": "node rollup/wasm.cjs && npm run cjs && npm run rollup:index && npm run size",
