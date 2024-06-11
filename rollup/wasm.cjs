@@ -4,19 +4,14 @@ const sql = require('sql.js');
 const { encode } = require('buffer-to-base64/encode');
 
 const wasm = readFileSync(require.resolve('sql.js/dist/sql-wasm.wasm'));
-const index = join(__dirname, '..', 'esm', 'index.js');
+const sqlite = join(__dirname, '..', 'esm', 'base64', 'sqlite.js');
 
 writeFileSync(
   join(__dirname, '..', 'esm', 'sql.js'),
   `let initSqlJsPromise,module;\nexport default ${sql}`
 );
 
-encode(wasm).then(base64 => {
-  writeFileSync(
-    index,
-    readFileSync(index).toString().replace(
-      /const sqlite = \(\) => decode\('[\S\s]*?'\);/,
-      `const sqlite = () => decode('${base64}');`,
-    )
-  );
-});
+encode(wasm).then(base64 => writeFileSync(
+  sqlite,
+  `// ⚠️ AUTOMATICALLY GENERATED\nexport default '${base64}';`
+));
