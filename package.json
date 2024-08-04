@@ -19,7 +19,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "ascjs": "^6.0.3",
-    "rollup": "^4.18.0"
+    "rollup": "^4.20.0"
   },
   "module": "./esm/index.js",
   "type": "module",
@@ -32,8 +32,8 @@
   },
   "unpkg": "index.js",
   "dependencies": {
-    "buffer-to-base64": "^0.1.5",
-    "sql.js": "^1.10.3"
+    "buffer-to-base64": "^0.1.6",
+    "sql.js": "^1.11.0"
   },
   "repository": {
     "type": "git",
