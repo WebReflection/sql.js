@@ -6,7 +6,7 @@
     "build": "node rollup/wasm.cjs && npm run cjs && npm run rollup:index && npm run size",
     "cjs": "ascjs --no-default esm cjs",
     "rollup:index": "rollup --config rollup/index.config.js",
-    "size": "cat index.js | brotli | wc -c"
+    "size": "cat index.js | brotli | wc -c; cat persistent.js | brotli | wc -c"
   },
   "keywords": [
     "sqlite",
@@ -19,7 +19,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "ascjs": "^6.0.3",
-    "rollup": "^4.27.3"
+    "rollup": "^4.28.0"
   },
   "module": "./esm/index.js",
   "type": "module",
@@ -28,10 +28,15 @@
       "import": "./esm/index.js",
       "default": "./cjs/index.js"
     },
+    "./persistent": {
+      "import": "./esm/persistent.js",
+      "default": "./cjs/persistent.js"
+    },
     "./package.json": "./package.json"
   },
   "unpkg": "index.js",
   "dependencies": {
+    "@webreflection/idb-map": "^0.3.2",
     "buffer-to-base64": "^0.1.6",
     "sql.js": "^1.12.0"
   },

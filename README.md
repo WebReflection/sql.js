@@ -29,3 +29,40 @@ console.log(result); // Will print {a:1, b:'world'}
 
 db.close();
 ```
+
+## @webreflection/sql.js/persistent
+
+Based on [IndexedDB](https://github.com/WebReflection/idb-map?tab=readme-ov-file#idbmapsync-api),
+this export provides an extend of the [SQL.Database](https://sql.js.org/documentation/Database.html)
+class with an additional `delete()` and `save()` methods plus a *smart constructor* that does the following:
+
+```js
+import Database from 'https://esm.run/@webreflection/sql.js/persistent';
+
+const db = new Database(
+  // the persistent name of such db
+  'data.db',
+  // an optional buffer to use when
+  // no such name exists in the storage
+  someOptionalBufferToInit
+);
+
+// create a table only if not present
+db.run('CREATE TABLE IF NOT EXISTS hello (a int, b char)');
+
+// do anything you would do with an SQLite DB
+
+// save it, optionally awaiting for it
+await db.save();
+
+// close it or keep going
+db.close();
+```
+
+The constructor signature allows to create or reuse a previously stored DB, providing eventually a DB that existed already and that's exported as buffer or *Uint8Array*.
+
+When previously stored, the next time that DB would be used instead of such provided initial DB, simplifying the orchestration between new user or freed cache VS some data to crawl anyway for such user.
+
+It is also possible to `db.delete()` (optionally awaitable) some file ti be sure the storage is clean and to migrate from a version of a DB to another one.
+
+Like it is for the default export of this module, `/persistent` works in both main thread and workers.
