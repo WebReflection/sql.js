@@ -66,3 +66,9 @@ When previously stored, the next time that DB would be used instead of such prov
 It is also possible to `db.delete()` (optionally awaitable) some file ti be sure the storage is clean and to migrate from a version of a DB to another one.
 
 Like it is for the default export of this module, `/persistent` works in both main thread and workers.
+
+### Warnings ⚠️
+
+The last `db.save()` operation will define the state of the database.
+
+This export works if you are running it on a single Page (PWA, Electron, etc.) but if you are running the same thing in multiple tabs last `.save()` will last, not the others.
