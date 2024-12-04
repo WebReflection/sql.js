@@ -605,6 +605,7 @@ else {
     }
     async close() {
       await this.#promise;
+      this.#port.close();
       this.#port = null;
       this.#name = '';
       this.#promise = null;
