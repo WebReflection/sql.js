@@ -72,3 +72,14 @@ Like it is for the default export of this module, `/persistent` works in both ma
 The last `db.save()` operation will define the state of the database.
 
 This export works if you are running it on a single Page (PWA, Electron, etc.) but if you are running the same thing in multiple tabs last `.save()` will last, not the others.
+
+To solve this issue I've provided also the following `shared` variant.
+
+
+## @webreflection/sql.js/shared
+
+This export is an *async* version of the *persistent Database* that bootstraps a *SharedWorker* so that multiple tabs can read and/or write to the same *db* where `db.save()` invokes will be queue to avoid concurrent saves within the worker.
+
+The **prepare statement** is currently missing due to the nature of the cursor and the needed orchestration behind but I am not excluding its availability in the future.
+
+Almost all other methods are supported and provide an async version of the [official API](https://sql.js.org/documentation/Database.html).

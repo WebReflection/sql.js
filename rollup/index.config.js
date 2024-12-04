@@ -24,4 +24,15 @@ export default [
       file: './persistent.js',
     }
   },
+  {
+    input: './esm/shared.js',
+    plugins: [
+      nodeResolve(),
+      // terser()
+    ],
+    output: {
+      esModule: true,
+      file: './shared.js',
+    }
+  },
 ];

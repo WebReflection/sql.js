@@ -10,7 +10,6 @@ if (!result.fields) {
   console.log('New DB');
   db.run(`INSERT INTO hello VALUES (0, 'hello')`);
   db.run(`INSERT INTO hello VALUES (1, 'world')`);
-  console.log(4);
 }
 
 stmt = db.prepare("SELECT * FROM hello WHERE a=$aval AND b=$bval");
