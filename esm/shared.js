@@ -86,7 +86,7 @@ if ('onconnect' in self) {
   };
 }
 else {
-  const withResolvers = Promise.withResolvers.bind(Promise);
+  const withResolvers = () => Promise.withResolvers();
 
   const options = { type: 'module', name: 'sql.js' };
 
