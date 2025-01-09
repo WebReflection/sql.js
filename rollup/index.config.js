@@ -14,6 +14,17 @@ export default [
     }
   },
   {
+    input: './esm/database.js',
+    plugins: [
+      nodeResolve(),
+      terser()
+    ],
+    output: {
+      esModule: true,
+      file: './database.js',
+    }
+  },
+  {
     input: './esm/persistent.js',
     plugins: [
       nodeResolve(),

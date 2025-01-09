@@ -1,8 +1,8 @@
 import IDBMapSync from '@webreflection/idb-map/sync';
 import initSqlJs from './index.js';
 
-export default async () => {
-  const idbMap = new IDBMapSync('sql.js');
+export default async (name = 'sql.js') => {
+  const idbMap = new IDBMapSync(name);
 
   const [SQL,] = await Promise.all([
     initSqlJs(),

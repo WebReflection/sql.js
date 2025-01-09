@@ -16,10 +16,10 @@
   "license": "MIT",
   "description": "An ESM re-packaged sql.js with embedded sqlite.wasm as buffer",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "ascjs": "^6.0.3",
-    "rollup": "^4.28.0"
+    "rollup": "^4.30.1"
   },
   "module": "./esm/index.js",
   "type": "module",
@@ -27,6 +27,10 @@
     ".": {
       "import": "./esm/index.js",
       "default": "./cjs/index.js"
+    },
+    "./database": {
+      "import": "./esm/database.js",
+      "default": "./cjs/database.js"
     },
     "./persistent": {
       "import": "./esm/persistent.js",
