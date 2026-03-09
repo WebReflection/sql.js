@@ -17,7 +17,7 @@
   "description": "An ESM re-packaged sql.js with embedded sqlite.wasm as buffer",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-terser": "^1.0.0",
     "ascjs": "^6.0.3",
     "rollup": "^4.41.0"
   },
